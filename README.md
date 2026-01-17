@@ -47,7 +47,7 @@ autoencoder/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/autoencoder.git
+git clone https://github.com/kalirajann/autoencoder.git
 cd autoencoder
 ```
 
