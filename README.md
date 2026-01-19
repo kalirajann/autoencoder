@@ -19,9 +19,11 @@ Both use the same encoder/decoder architecture, optimizer, loss, and training se
 
 ```
 autoencoder/
-├── baseline_autoencoder.py   # Model 1: latent_dim=64
-├── model2_autoencoder.py     # Model 2: latent_dim=32
-├── reconstructions/          # Output images
+├── 01_baseline_autoencoder.ipynb    # Model 1: latent_dim=64 (Jupyter)
+├── 02_model2_reduced_latent.ipynb    # Model 2: latent_dim=32 (Jupyter)
+├── baseline_autoencoder.py            # Model 1: latent_dim=64 (Python script)
+├── model2_autoencoder.py              # Model 2: latent_dim=32 (Python script)
+├── reconstructions/                   # Output images
 │   ├── original_1.png .. original_5.png
 │   ├── reconstructed_1.png .. reconstructed_5.png      # Model 1
 │   ├── reconstructed_model2_1.png .. reconstructed_model2_5.png  # Model 2
@@ -68,24 +70,42 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Run Model 1 (Baseline, latent_dim=64)
+### Option 1: Jupyter Notebooks (Recommended)
 
+1. **Start Jupyter:**
+   ```bash
+   source venv/bin/activate
+   jupyter notebook
+   # or
+   jupyter lab
+   ```
+
+2. **Open notebooks:**
+   - `01_baseline_autoencoder.ipynb` - Model 1 (latent_dim=64)
+   - `02_model2_reduced_latent.ipynb` - Model 2 (latent_dim=32)
+
+3. **Select kernel:** Choose "Python (autoencoder)" when prompted
+
+4. **Run cells:** Execute cells sequentially (Shift+Enter)
+
+### Option 2: Python Scripts
+
+**Run Model 1 (Baseline, latent_dim=64):**
 ```bash
+source venv/bin/activate
 python baseline_autoencoder.py
 ```
 
-- Trains on Fashion-MNIST
-- Saves `original_1.png`–`original_5.png` and `reconstructed_1.png`–`reconstructed_5.png` in `reconstructions/`
-- Prints encoder/decoder/autoencoder summaries, training loss per epoch, and final test reconstruction loss
-
-### Run Model 2 (Reduced latent, latent_dim=32)
-
+**Run Model 2 (Reduced latent, latent_dim=32):**
 ```bash
+source venv/bin/activate
 python model2_autoencoder.py
 ```
 
-- Same pipeline; saves `reconstructed_model2_1.png`–`reconstructed_model2_5.png`
-- Uses the same 5 test image indices (0–4) for direct comparison with Model 1
+Both scripts:
+- Train on Fashion-MNIST
+- Save original and reconstructed images in `reconstructions/`
+- Print encoder/decoder/autoencoder summaries, training loss per epoch, and final test reconstruction loss
 
 ---
 
@@ -115,6 +135,8 @@ Model 2’s higher reconstruction loss illustrates the **compression vs. quality
 - TensorFlow 2.x
 - NumPy
 - Pillow (PIL)
+- Jupyter (for notebooks)
+- ipykernel (for Jupyter kernel)
 
 ---
 
